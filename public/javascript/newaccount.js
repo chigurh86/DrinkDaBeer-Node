@@ -1,39 +1,25 @@
 $(document).ready(function() {
-    $('#submit').on('click', function() {
+    $('#submitPerson').on('click', function() {
         event.preventDefault();
+        alert("Hello! I am an alert box!!");
 
-        // create item object
-        // ajax POST itemObject to /api/items
-        // wait for res
 
-        var itemsObject = {
-            category: $('#category').val(),
-            upc: $('#upc').val(),
-            asin: $('#asin').val(),
-            quantity: $('#qty').val(),
-            product_name: $('#name').val(),
-            product_desc: $('#desc').val(),
-            image: $('#image').val(),
-            price: $('#price').val()
+        var personObject = {
+            username: $('#username').val(),
+            email: $('#email').val(),
+            photo: $('#photo').val(),
         };
 
-
-
-        $.post("/admin/items", itemsObject)
+        $.post("/api/userdata", personObject)
             .done(function(data) {
                 console.log(data);
-
             })
             .fail(function(error) {
                 console.log("THIS FAILED");
             });
-        $('#category').val("");
-        $('#upc').val("");
-        $('#asin').val("");
-        $('#qty').val("");
-        $('#name').val("");
-        $('#desc').val("");
-        $('#image').val("");
-        $('#price').val("");
+
+        $('#username').val("");
+        $('#email').val("");
+        $('#photo').val("");
     });
 });

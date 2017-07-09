@@ -6,7 +6,6 @@ $(document).ready(function() {
         $.post("/api/search", name)
             .done(function(data) {
                 console.log("The Data "+ data);
-
             })
             .fail(function(error) {
                 console.log("THIS FAILED");

@@ -13,6 +13,8 @@ module.exports = function(app) {
 
 
     app.get("/api/search", function(req, res) {
+      const { name } = req.body;
+      console.log("thename "+ name);
       // console.log("Log Body: " + JSON.stringify(req.body.name))
       var BreweryDb = require('node-brewerydb');
       var client = new BreweryDb({apiKey: key});
@@ -25,12 +27,29 @@ module.exports = function(app) {
           res.json(response);
       });
     })
-    app.post("/api/profile", function(req, res) {
-      const { name, email, photo } = req.body;
+    app.post("/api/userdata", function(req, res) {
+      const { username, email, photo } = req.body;
+      console.log("daInfo "+ username, email, photo);
       var newPerson = {
-            name: name,
+            username: username,
             email: email,
             photo: photo,
         }
+        connection.query("INSERT INTO users SET ?", newPerson, function(err, res) {
+              res.status(200).json({ success: true });
+          });
       });
+
+    app.get("/api/userdata", function(req, res) {
+    connection.query("SELECT * FROM users WHERE username=?", ["Anton Chigurh"], function(err, data) {
+        if (err) {
+            throw err;
+        }
+        else {
+            console.log("here: "+ data);
+        }
+
+        res.json(data);
+    });
+});
   }
