@@ -15,13 +15,13 @@ module.exports = function(app) {
       var BreweryDb = require('node-brewerydb');
       var client = new BreweryDb({apiKey: key});
 
-      client.beers({name: 'Bud Light'}, function(err, res) {
+      client.beers({name: req.body.name}, function(err, response) {
         if (err) {
           // handle errors
         }
         // console.log(res);
-        // console.log(res.data[0].labels.large);
-          res.json(res);
+        console.log(response);
+          res.json(response);
       });
     })
 

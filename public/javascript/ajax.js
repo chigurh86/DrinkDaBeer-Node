@@ -1,36 +1,46 @@
 
 function displayBeers(){
 
-    $.get("/api/search", function(data) {
-      console.log(data)
+    $.get("/api/search", function(response) {
+    // console.log("the response" + JSON.stringify(response))
+    console.log(response.data[0].name);
+      // $('#display').empty();
+      for (var i = 0; i < 5; i++) {
+        console.log("the name" + response.data[0].name)
+        var beerDiv = $("<div class ='productHolder thumbnail hero-feature beerDiv'>");
+        var beerCaption = $("<div>");
+        var beerImage = $("<img>");
+        beerImage.attr("alt", response.data[0].name);
+        beerImage.attr("src", response.data[0].labels.large);
+        beerImage.addClass('beerImage');
+        var name = response.data[0].name;
+        var desc = response.data[0].description;
+        var abv = response.data[0].abv;
+        var organic = response.data[0].isOrganic;
+        // display to DOM
+        // building caption
+        beerCaption.append("<h3>" + name + "</h3>");
+        beerCaption.append("<div class ='desc'>" + "<p>" + desc + "</p>" + "</div");
+        beerCaption.append("<div class ='abv'>" + "<p>" + "ABV: " + abv + "</p>" + "</div");
+        if (organic === "N") {
+          organic = "No"
+        }
+        else if (organic === "Y"){
+          organic = "Yes"
+        }
+        beerCaption.append("<div class ='abv'>" + "<p>" + "Organic: " + organic + "</p>" + "</div");
+
+        // building thumbnail
+        beerDiv.append(beerImage);
+        beerDiv.append(beerCaption);
+        $('#display').append(beerDiv);
+      }
     });
   }
 
 
-function display(){
-    for (var i = 0; i < 12; i++) {
-      var beerDiv = $("<div class ='productHolder thumbnail hero-feature beerDiv'>");
-      var beerCaption = $("<div>");
-      var beerImage = $("<img>");
-      // beerImage.attr("alt", res.data[i].name);
-      // beerImage.attr("src", res.data[i].labels.large);
-      beerImage.addClass('beerImage');
-      // var name = res.data[i].name;
-      // var description = res.data[i].description;
-      // var abv = res.data[i].abv;
-      // display to DOM
-      // building caption
-      beerCaption.append("<h3>" + "name" + "</h3>");
-      beerCaption.append("<div class ='desc'>" + "<p>" + "desc" + "</p>" + "</div");
-      // building thumbnail
-      beerDiv.append(beerImage);
-      beerDiv.append(beerCaption);
-      $('#display').append(beerDiv);
-    }
-  }
-
   $( "#beer_search" ).click(function() {
     event.preventDefault();
-    $('#display').empty();
+
     displayBeers();
     });
