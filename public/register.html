@@ -1,22 +1,13 @@
 <!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <!-- <link rel="icon" type="image/png" href="/images/logo.png"> -->
+<html>
+  <head>
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <title>Drink Da Beer</title>
-    <!-- Bootstrap Core CSS -->
-    <!-- Added a link to Bootstrap-->
+    <title>Registration Page</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="/css/style.css">
-</head>
-<body>
-    <!-- Navigation -->
+  </head>
+  <body>
     <nav class="navbar navbar-default">
       <div class="container-fluid">
         <!-- Brand and toggle get grouped for better mobile display -->
@@ -37,25 +28,29 @@
             <li><a href="mybeers.html">My Beers</a></li>
             <li><a href="register.html">Register</a></li>
 
+
           </ul>
-          <form method="post" class="navbar-form navbar-right moveDown absolute theSearch">
-            <div class="form-group">
-              <input id="theBeer" name="theBeer"  class="form-control" placeholder="Find Beers"/>
-            </div>
-            <button type="submit" id="beer_search" class="btn btn-default">Submit</button>
-          </form>
         </div><!-- /.navbar-collapse -->
       </div><!-- /.container-fluid -->
     </nav>
-      <div class="container-fluid">
-        <div class="col-md-12">
-            <div id="display">
-            </div>
+      <div class="row">
+        <div class="col-lg-6 col-lg-offset-3 " style="text-align:center;" >
+            <h1>Register Your Account</h1>
+            <h4>And we will remember how much beer you drank for you!</h4>
+            <form class="center" method="post">
+              <div class="form-group center">
+                <input id="name" name="name"  class="form-control" placeholder="Name"/>
+                <input id="email" name="email"  class="form-control" placeholder="email"/>
+                <input id="photo" name="photo"  class="form-control" placeholder="link a photo"/>
+                <button type="reset" id="reset" class="btn btn-primary">Reset</button>
+                <button type="submit" id="submit" class="btn btn-default">Submit</button>
+              </div>
+            </form>
         </div>
       </div>
-    <!-- /.container -->
+    </div>
     <script type="text/javascript" src="https://code.jquery.com/jquery-2.2.0.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-    <script type="text/javascript" src="./javascript/ajax.js"></script>
-</body>
+    <script type="text/javascript" src="./javascript/newaccount.js"></script>
+  </body>
 </html>

@@ -1,3 +1,20 @@
+// post from DOM
+$(document).ready(function() {
+    $('#submit').on('click', function() {
+        event.preventDefault();
+        var name = $('#theBeer').val();
+        $.post("/api/search", name)
+            .done(function(data) {
+                console.log("The Data "+ data);
+
+            })
+            .fail(function(error) {
+                console.log("THIS FAILED");
+            });
+        $('#theBeer').val("");
+    });
+});
+
 
 function displayBeers(){
 
@@ -22,12 +39,12 @@ function displayBeers(){
         beerCaption.append("<h3>" + name + "</h3>");
         beerCaption.append("<div class ='desc'>" + "<p>" + desc + "</p>" + "</div");
         beerCaption.append("<div class ='abv'>" + "<p>" + "ABV: " + abv + "</p>" + "</div");
-        if (organic === "N") {
-          organic = "No"
-        }
-        else if (organic === "Y"){
-          organic = "Yes"
-        }
+          if (organic === "N") {
+            organic = "No"
+          }
+          else if (organic === "Y"){
+            organic = "Yes"
+          }
         beerCaption.append("<div class ='abv'>" + "<p>" + "Organic: " + organic + "</p>" + "</div");
 
         // building thumbnail
@@ -41,6 +58,5 @@ function displayBeers(){
 
   $( "#beer_search" ).click(function() {
     event.preventDefault();
-
     displayBeers();
     });
