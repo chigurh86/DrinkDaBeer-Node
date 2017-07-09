@@ -1,6 +1,7 @@
 // post from DOM
 $(document).ready(function() {
-    $('#submit').on('click', function() {
+    $('#beer_search').on('click', function() {
+      alert("Got to beer search");
         event.preventDefault();
         var name = $('#theBeer').val();
         $.post("/api/search", name)
@@ -12,6 +13,7 @@ $(document).ready(function() {
             });
         $('#theBeer').val("");
     });
+    
 });
 
 

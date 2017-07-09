@@ -1,5 +1,5 @@
 {
-  "name": "beat-or-match",
+  "name": "Drink-Da-Beer",
   "version": "1.0.0",
   "description": "",
   "main": "server.js",
@@ -9,21 +9,20 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ihabrbelal/beat-or-match.git"
+    "url": "git+https://github.com/chigurh86/DrinkDaBeer-Node.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/ihabrbelal/beat-or-match/issues"
+    "url": ""
   },
-  "homepage": "https://github.com/ihabrbelal/beat-or-match#readme",
+  "homepage": "https://github.com/chigurh86/DrinkDaBeer-Node.git",
   "dependencies": {
     "body-parser": "^1.17.2",
     "express": "^4.15.3",
     "express-handlebars": "^3.0.0",
     "google-images": "^2.1.0",
     "mysql": "^2.13.0",
-    "passport": "^0.3.2",
     "price-finder": "^4.3.1",
     "semantics3-node": "0.0.3"
   }

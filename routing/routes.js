@@ -11,11 +11,16 @@ module.exports = function(app) {
         res.sendFile(path.join(__dirname, "../public/index.html"));
     });
 
+    app.get("/api/stuff", function(req, res) {
+        const { name } = req.body;
+        console.log("name: "+ name)
+    });
 
     app.get("/api/search", function(req, res) {
+      console.log("Log Body: " + JSON.stringify(req.body))
       const { name } = req.body;
-      console.log("thename "+ name);
-      // console.log("Log Body: " + JSON.stringify(req.body.name))
+      console.log("name: "+ name)
+
       var BreweryDb = require('node-brewerydb');
       var client = new BreweryDb({apiKey: key});
       client.beers({name: 'Tecate'}, function(err, response) {
@@ -27,6 +32,7 @@ module.exports = function(app) {
           res.json(response);
       });
     })
+
     app.post("/api/userdata", function(req, res) {
       const { username, email, photo } = req.body;
       console.log("daInfo "+ username, email, photo);
