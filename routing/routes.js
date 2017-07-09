@@ -10,18 +10,19 @@ module.exports = function(app) {
         // res.redirect("/index.html");
         res.sendFile(path.join(__dirname, "../public/index.html"));
     });
-
+// [req.body.burger]
     app.get("/api/search", function(req, res) {
       var BreweryDb = require('node-brewerydb');
-
       var client = new BreweryDb({apiKey: key});
 
-
-      client.beers({name: 'Tecate'}, function(err, res) {
+      client.beers({name: 'Bud Light'}, function(err, res) {
         if (err) {
           // handle errors
         }
-        console.log(res);
+        // console.log(res);
+        // console.log(res.data[0].labels.large);
+          res.json(res);
       });
     })
+
   }

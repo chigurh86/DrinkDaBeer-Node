@@ -1,21 +1,36 @@
-$(document).ready(function() {
-  var key = "41a39c55ae4b474f10857cef0edbf812"
-    $("#beer_search").click(function(){
-        $.post("http://www.thebeerspot.com/api/search",
-        { "function" : "beer" ,
-        "dev_key" : "41a39c55ae4b474f10857cef0edbf812" ,
-        "search_term" : "darkness",
-        "limit" : "5" },
-            function(response) {
-                $.each(response, function() {
-                    $.each(this, function(name, value) {
-                        // add each item to a div on the page
-                        $("#display").append(name + " : " + value + "<br />");
-                    });
-                    // throw a line break at the end of each item
-                    $("#display").append("<br />");
-                });
 
-            });
-    })
-});
+function displayBeers(){
+
+    $.get("/api/search", function(data) {
+      console.log(data)
+    });
+  }
+
+
+function display(){
+    for (var i = 0; i < 12; i++) {
+      var beerDiv = $("<div class ='productHolder thumbnail hero-feature beerDiv'>");
+      var beerCaption = $("<div>");
+      var beerImage = $("<img>");
+      // beerImage.attr("alt", res.data[i].name);
+      // beerImage.attr("src", res.data[i].labels.large);
+      beerImage.addClass('beerImage');
+      // var name = res.data[i].name;
+      // var description = res.data[i].description;
+      // var abv = res.data[i].abv;
+      // display to DOM
+      // building caption
+      beerCaption.append("<h3>" + "name" + "</h3>");
+      beerCaption.append("<div class ='desc'>" + "<p>" + "desc" + "</p>" + "</div");
+      // building thumbnail
+      beerDiv.append(beerImage);
+      beerDiv.append(beerCaption);
+      $('#display').append(beerDiv);
+    }
+  }
+
+  $( "#beer_search" ).click(function() {
+    event.preventDefault();
+    $('#display').empty();
+    displayBeers();
+    });

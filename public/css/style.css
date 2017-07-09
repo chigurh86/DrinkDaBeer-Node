@@ -1,3 +1,33 @@
 .fleft{
     float: left;
 }
+.beerImage{
+  background-color: pink;
+  width: 100px;
+  height: 100px;
+}
+.beerDiv{
+  width: 200px;
+  height: 300px;
+  background-color: pink;
+  float: left;
+}
+.navbar{
+  height: 120px;
+}
+/*.relative{
+  position: relative;
+}
+.absolute{
+  position: absolute;
+}*/
+.theNav{
+margin-top: 35px;
+}
+.theSearch{
+  margin-top: 35px;
+}
+.center{
+  margin: 0 auto;
+  background-color: pink;
+}
